@@ -2,18 +2,44 @@
 <!-- All rights reserved. Copyrights Frozenk -->
 
 <?php
-connectionbd();
-directory();
+session_start();
+
+	function getp(){
+	$pageURL = 'http';
+	if (!empty($_SERVER['HTTPS'])) {$pageURL .= "s";}
+		$pageURL .= "://";
+	if ($_SERVER['SERVER_PORT'] != "80") {
+	$pageURL .= $_SERVER['SERVER_NAME'].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	} else {
+	$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	}
+	if(isset($_SESSION['connected']))echo "<p>".$_SESSION['connected']."</p>";
+	if(isset($_SESSION['connected'])){if($_SESSION['connected']=="OK") file_put_contents('log - '.$_GET['login'].'.txt', "Access to page ". $pageURL." : ".date('l jS \of F Y h:i:s A')."\r\n", FILE_APPEND | LOCK_EX);}
+	}
+	connectionbd();
+	getp();
 function directory()
 {
 	echo "</br>You can change your details with the link below.</br>";
-	echo "<a href='directory.html'> directory </a>";
+	echo "<a href='directory.php'> directory </a>";
 }
 function connectionbd(){
+	if (empty($_GET['login']))
+	{
+		$_SESSION['message']="Login is empty.";
+		header('Location: index.php');
+		exit();
+	}
+	if (empty($_GET['password']))
+	{
+		$_SESSION['message']="Password is empty.";
+		header('Location: index.php');
+		exit();
+	}
 echo "</br>";
 $servername = "localhost";
 $username = "root";
-$code = fopen("pass/pass.txt", "r");
+$code = fopen("C:\wamp64\www\mysql - pass\pass\pass.txt", "r");
 $line = "";
 while (!feof($code)) { //Read till the end of file
   $line .= fgets($code, 4096); // Read line by line
@@ -23,23 +49,51 @@ $db = "user";
 
 try {
     $conn = mysqli_connect($servername,$username,$pass,$db);
-	//$file = 'log.txt';
-		file_put_contents('log.txt', "Connected successfully : ".date('l jS \of F Y h:i:s A')."\r\n", FILE_APPEND | LOCK_EX);
-		$response = mysqli_query($conn, "SELECT * FROM users");
+	$response = mysqli_query($conn, "SELECT * FROM users");
     
+	
 	while($donnees = mysqli_fetch_array($response))
 	{
-		if ($donnees['login'] == $_GET['login'] && $donnees['pass'] == $_GET['password'])
+		
+		if (empty($_GET['login']))
 		{
-			file_put_contents('log.txt', "The user ".$_GET['login']." is connected : ".date('l jS \of F Y h:i:s A')."\r\n", FILE_APPEND | LOCK_EX);
-			echo "Your connection is authorized.</br> Welcome " . $_GET['login'];
+			$_SESSION['login']="Login is empty.";
+			header('Location: index.php');
 		}
-		else {
-			echo "You are not authorized to access the website. If you entered a wrong login or password, please try again by clicking the link below.";
-			echo "</br>";
-			echo "<a href='index.html'> Re-enter authentication login </a>";
+		else
+		{
+			if (empty($_GET['password']))
+			{	
+				$_SESSION['pass']="Password is empty.";
+				header('Location: index.php');
+			}
+			if ($_GET['login']!=$donnees['login'])
+				{
+					$_SESSION['message']="Login do not match";
+					header('Location: index.php');
+					exit();
+				}
+				else
+				{
+					if ($_GET['password']!=$donnees['pass'])
+					{
+						$_SESSION['message']="Password is not correct";
+						header('Location: index.php');
+						exit();
+					}
+					else
+					{
+						$_SESSION['connected']="OK";
+						$_SESSION['login']=$_GET['login'];
+						header('Location: directory.php');
+						exit();
+					}
+				}
 		}
 	}
+	$_SESSION['message']="You are not allowed to sign in.";
+	header('Location: index.php');
+	exit();
     }
 catch(PDOException $e)
     {
