@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Annuaire.html</title>
+<title>Directory.php</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@ session_start();
 	if($_SESSION['connected']!="OK") {session_unset(); session_write_close(); header('Location: index.php'); exit();}
 	if($_SESSION['connected']=="OK") file_put_contents('log - '.$_SESSION['login'].'.txt', "Access to page ". $pageURL." : ".date('l jS \of F Y h:i:s A')."\r\n", FILE_APPEND | LOCK_EX);
 	?>
-<p>Annuaire in construction</p>
+<p>Dictory in construction</p>
 <a href="index.php">Back to home page</a>
 </br>
 </br>

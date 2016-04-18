@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Index</title>
+	<title>Index.php</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
 	<meta name="author" content="Local Author">
