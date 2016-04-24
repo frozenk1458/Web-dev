@@ -3,52 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Index.php</title>
+	<title>news.php</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
 	<meta name="author" content="Local Author">
-	<!-- <meta http-equiv="refresh" content="10"> -->
 </head>
 <body>
-	<script>
-	function loadAuthentication() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "connect.php", true);
-	xhttp.send();
-	}
-	</script>
-	<script>
-	function loadNews() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "news.php", true);
-	xhttp.send();
-	}
-	</script>
-	<script>
-	function loadDirectory() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "directory.php", true);
-	xhttp.send();
-	}
-	</script>
-
- <div class="connect" onload="loadDirectory()" id="d">
-	<p>
+<div class="connect"> 
+<p><p>
 	<?php 
 	session_start();
 	if(isset($_SESSION['connected'])) {if($_SESSION['connected']=="OK") {session_write_close(); session_start();}}
@@ -80,27 +42,9 @@
 	<p id="al"> <?php if(isset($_SESSION['login']) && empty($_SESSION['login'])) { echo "&#9888".$_SESSION['login']; session_unset(); session_write_close();} ?></p>
     <!-- Case: The user is already log in -->
 	<p id="al"> <?php if((isset($_SESSION['login'])) && (isset($_SESSION['exist_login'])) && ($_SESSION['connected']=="OK")) { echo "&#9888".$_SESSION['exist_login']; echo "</br></br>";} ?></p>
-	<p id="al"> <?php if((isset($_SESSION['messconnected']))) { echo "&#9888".$_SESSION['messconnected']; echo "</br></br>";} ?></p>
 	<?php
 		if (isset($_SESSION['not exist_login'])) { echo "<p id='al'>&#9888".$_SESSION['not exist_login']."</p></br></br>";}
-	?>
-</div> 
-	<div class="m">
-	<p onclick="loadAuthentication()" id="line"> Authentication </p>
-	<p onclick="loadNews()" id="line"> News </p>
-	<p></p>
-	<p onclick="loadDirectory()" id="line">Directory</p>
-	<script type="text/javascript">
-	button type="button" 
-	onclick="document.getElementById('demo').innerHTML = Date()">
-		Click me to display Date and Time.
-	</button>
-	</script>
-	<p id="demo"> </p>
-	<!-- Log out section -->
-	<form action="func.php">
-	<button type="submit" formaction="func.php">Disconnect</button>
-	</div>
-</form>
+	?></p>
+</div>
 </body>
 </html>
