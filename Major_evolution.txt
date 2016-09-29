@@ -1,5 +1,6 @@
-On the 2016.04.24
+On the 2016.09.28
 
-- Design improvement
-- Add some interactions
-- Add ajax dynamics
+- Some JS scripts
+- Flexibility added to the code
+- Add current date and hours
+- Use HTML5 & Javascript (not PHP)
