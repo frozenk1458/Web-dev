@@ -1,6 +1,3 @@
-On the 2016.09.28
+On the 2016.09.29
 
-- Some JS scripts
-- Flexibility added to the code
-- Add current date and hours
-- Use HTML5 & Javascript (not PHP)
+- Develop a java (applet....) given in real-time the current time

@@ -40,43 +40,6 @@
 			</script>
 		</p>
 	</div>
-	<script>
-	function loadAuthentication() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "connect.php", true);
-	xhttp.send();
-	}
-	</script>
-	<script>
-	function loadNews() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "news.php", true);
-	xhttp.send();
-	}
-	</script>
-	<script>
-	function loadDirectory() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("d").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "directory.php", true);
-	xhttp.send();
-	}
-	</script>
-
  <div class="connect" onload="loadDirectory()" id="d">
 	<p>
 	<script>
@@ -98,6 +61,7 @@
 			<button type="reset" formaction="index.html">Reset</button>
 		</P>
 	</FORM>
+	<a href="Register.html"> Not register yet. Click here. </a>
 	<!--- Connexion message if something wrong with authentication details --->
 	<p id="al"> <script> 
 							if (sessionStorage.login == " ") {   
@@ -117,22 +81,6 @@
 				</script>
 	</p>
 </div> 
-	<div class="m">
-	<p onclick="loadAuthentication()" id="line"> Authentication </p>
-	<p onclick="loadNews()" id="line"> News </p>
-	<p></p>
-	<p onclick="loadDirectory()" id="line">Directory</p>
-	<script type="text/javascript">
-	button type="button" 
-	onclick="document.getElementById('demo').innerHTML = Date()">
-		Click me to display Date and Time.
-	</button>
-	</script>
-	<p id="demo"> </p>
-	<!-- Log out section -->
-	<form action="func.php">
-	<button type="submit" formaction="func.php">Disconnect</button>
-	</div>
 </form>
 </body>
 </html>
