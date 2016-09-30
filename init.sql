@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS Web;
 
-CREATE DATABASE Web ;
+CREATE DATABASE Web;
 
-use web;
+use Web;
 
 CREATE TABLE users
 (
