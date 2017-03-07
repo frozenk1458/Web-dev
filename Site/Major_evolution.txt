@@ -1,3 +1,0 @@
-On the 2016.09.29
-
-- Develop a java (applet....) given in real-time the current time
