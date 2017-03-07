@@ -1,0 +1,70 @@
+<!-- Development by Frozenk-->
+<!-- All rights reserved. Copyrights Frozenk -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<link rel="stylesheet" type="text/css" href="C:\wamp64\www\my-site\touch\Web-dev\style.css">
+	<meta charset="UTF-8">
+	<meta name="author" content="Local Author">
+	<!-- <meta http-equiv="refresh" content="10"> -->
+</head>
+<body>
+<script>
+function toArray(list) {
+   return Array.prototype.slice.call(list || [], 0);
+}
+
+function listResults(entries) {
+   var content = '';
+   entries.forEach(function(entry, i) {
+      content += entry.isDirectory?'[dir]':'';
+      content+= entry.name+'\n';
+   });
+
+   alert(content);
+}
+
+function readDirectory (fs) {
+
+   var dirReader = fs.root.createReader();
+   var entries = [];
+	
+   // On appelle reader.readEntries() tant qu'il y a des éléments dans le dossier.
+   var readEntries = function() {
+      dirReader.readEntries (function(results) {
+         if(!results.length) {
+            listResults(entries.sort());
+         }else{
+            entries = entries.concat(toArray(results));
+            readEntries();
+         }
+      }, errorHandler);
+   };
+   // On lit le contenu dossier
+   readEntries();
+   listResults(entries);
+}
+
+window.requestFileSystem(window.TEMPORARY, 1024*1024, readDirectory, errorHandler);
+readDirectory();
+</script>
+	<p>Connexion to the website :<p>
+	<FORM action="login.php" method="GET">
+		<P>
+			<LABEL for="login">Login : </LABEL>
+              <INPUT type="text" name="login" id="login" placeholder="Enter login"></BR></br>
+		    <LABEL for="password">Password : </LABEL>
+              <INPUT type="password" name="password" id="password" placeholder="Enter password"></BR>
+			  </br>
+			<INPUT type="submit" value="Envoyer"> <INPUT type="reset">
+		</P>
+	</FORM>
+	<button type="button" 
+	onclick="document.getElementById('demo').innerHTML = Date()">
+		Click me to display Date and Time.
+	</button>
+	<p id="demo"> </p>
+</body>
+</html>
