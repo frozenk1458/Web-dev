@@ -1,0 +1,86 @@
+<!-- Developed by Frozenk-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="author" content="Local Author">
+	<script>
+				function dd(){
+				var d = new Date();
+				document.write(d.getUTCDay() + "/" + d.getMonth() + "/" + d.getFullYear());
+				}
+	</script>
+	<script>
+			function hh(){
+				var d = new Date();
+				document.write(d.getHours() +":"+ d.getMinutes() + ":" + d.getSeconds());
+				}
+	</script>
+</head>
+<body>
+	<!-- Current date and hours display. Refresh every second-->
+	<div id="r">
+		<p>
+			<script>
+				dd();
+			</script>
+			, 
+			<script>
+			var auto_refresh = setInterval(	
+			function ()
+			{
+				$('#r').load('index.html').fadeIn("slow");
+			}, 10); // refresh every 10 milliseconds
+ 
+				hh();
+				
+			</script>
+		</p>
+	</div>
+ <div class="connect" onload="loadDirectory()" id="d">
+	<p>
+	<script>
+		if(sessionStorage == null) document.write("The browser not support the storage");
+		var login = sessionStorage.login;
+		sessionStorage.login = " ";
+		var password = sessionStorage.password;
+		sessionStorage.password = " ";
+	</script>
+	</p>
+	<FORM name="f" onSubmit="login_disp(this)">
+		<P>
+			<LABEL for="login">Login : </LABEL>
+              <INPUT type="text" name="login" id="login" placeholder="Enter login"></BR></br>
+		    <LABEL for="password">Password : </LABEL>
+              <INPUT type="password" name="password" id="password" placeholder="Enter password" onSubmit="pass_disp(this)"></BR>
+			  </br>
+			<button type="submit" formaction="index.html">Envoyer</button>
+			<button type="reset" formaction="index.html">Reset</button>
+		</P>
+	</FORM>
+	<a href="Register.html"> Not register yet. Click here. </a>
+	<!--- Connexion message if something wrong with authentication details --->
+	<p id="al"> <script> 
+							if (sessionStorage.login == " ") {   
+							document.write("User not connected");
+							}
+				</script>
+				<script>
+						function login_disp(nForm) {
+							<!-- Enter code to display login and password. It is to manipulate it and interact with DB -->
+						}
+				</script> 
+				</br>
+				<script> 
+							if (sessionStorage.password == " ") {   
+							document.write("Pass not defined");
+							}
+				</script>
+	</p>
+</div> 
+</form>
+</body>
+</html>
