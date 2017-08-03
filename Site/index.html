@@ -10,13 +10,42 @@
 	<script>
 				function dd(){
 				var d = new Date();
-				document.write(d.getUTCDay() + "/" + d.getMonth() + "/" + d.getFullYear());
+				if(d.getUTCDay()<10)
+				{
+					dd = '0' + d.getUTCDay();
+				}
+				if(d.getMonth()<10)
+				{
+					mm = '0' + d.getMonth();
+				}
+				document.write(dd + "/" + mm + "/" + d.getFullYear());
 				}
 	</script>
 	<script>
 			function hh(){
 				var d = new Date();
-				document.write(d.getHours() +":"+ d.getMinutes() + ":" + d.getSeconds());
+				sd = d.getSeconds();
+				hh = d.getHours();
+				minute = d.getMinutes();
+				if(d.getSeconds()<10)
+				{
+					sd = '0' + d.getSeconds();
+				}
+				if(d.getMinutes()<10)
+				{
+					minute = '0' + d.getMinutes();
+				}
+				if(d.getHours()<10)
+				{
+					hh = '0' + d.getHours();
+				}
+				document.write(hh +":"+ minute + ":" + sd);
+			
+				}
+	</script>
+	<script>
+			function password(){
+				document.write("Please enter a password.");
 				}
 	</script>
 </head>
@@ -63,22 +92,14 @@
 	</FORM>
 	<a href="Register.html"> Not register yet. Click here. </a>
 	<!--- Connexion message if something wrong with authentication details --->
-	<p id="al"> <script> 
-							if (sessionStorage.login == " ") {   
-							document.write("User not connected");
-							}
-				</script>
+	<p id="al"> 
 				<script>
 						function login_disp(nForm) {
 							<!-- Enter code to display login and password. It is to manipulate it and interact with DB -->
+							document.write("Please enter a password.");
 						}
 				</script> 
 				</br>
-				<script> 
-							if (sessionStorage.password == " ") {   
-							document.write("Pass not defined");
-							}
-				</script>
 	</p>
 </div> 
 </form>
