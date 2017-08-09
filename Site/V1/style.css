@@ -11,6 +11,13 @@ p#al{
 	color: red;
 }
 
+div.menu{
+	color: green;
+	text-decoration: underline;
+	position:absolute;
+    top: 20%;
+}
+
 div.bod{
 	margin: auto;
 	position:absolute;
@@ -46,13 +53,13 @@ div.connect{
     margin-top: -100px; 
 }
 
-div.menu {
+div.register {
     margin: auto;
 	position:absolute;
     left: 50%;
     top: 68%;
-    width: 400px;
-    height: 200px;
+    width: 600px;
+    height: 600px;
     margin-left: -100px;
     margin-top: -100px; 
 }
