@@ -10,13 +10,15 @@
 	<script>
 				function dd(){
 				var d = new Date();
+				dd =d.getDate();
+				mm =d.getMonth()+1;
 				if(d.getUTCDay()<10)
 				{
-					dd = '0' + d.getUTCDay();
+					dd = '0' + dd;
 				}
 				if(d.getMonth()<10)
 				{
-					mm = '0' + d.getMonth();
+					mm = '0' + mm;
 				}
 				document.write(dd + "/" + mm + "/" + d.getFullYear());
 				}
