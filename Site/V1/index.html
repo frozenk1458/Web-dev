@@ -62,9 +62,14 @@
 		//Isolate the password
 		var res3 = res1[1].split("=");
 		//Testing that the login and the password match well 
+		document.write ("OK! Authentifier");
 		if(res2[1] == 'rodul' && res3[1] == 'rodul')
 		{
-			document.write ("OK! Authentifier");
+		document.write ("OK! Authentifier");
+			if(sessionStorage == null) document.write("The browser not support the storage");
+			sessionStorage.login=res2[1];
+			sessionStorage.password=res3[1];
+			document.write (sessionStorage.login + sessionStorage.password
 		}
 	}	
 	</script>
@@ -101,15 +106,6 @@
 	</p>
 </div>
  <div class="connect" onload="loadDirectory()" id="d">
-	<p>
-	<script>
-		if(sessionStorage == null) document.write("The browser not support the storage");
-		var login = sessionStorage.login;
-		sessionStorage.login = " ";
-		var password = sessionStorage.password;
-		sessionStorage.password = " ";
-	</script>
-	</p>
 	<form method="get" action="index.html">
 			<LABEL for="login">Login : </LABEL>
               <INPUT type="text" name="login" id="login" placeholder="Enter login">
