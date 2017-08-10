@@ -62,14 +62,10 @@
 		//Isolate the password
 		var res3 = res1[1].split("=");
 		//Testing that the login and the password match well 
-		document.write ("OK! Authentifier");
 		if(res2[1] == 'rodul' && res3[1] == 'rodul')
 		{
-		document.write ("OK! Authentifier");
-			if(sessionStorage == null) document.write("The browser not support the storage");
 			sessionStorage.login=res2[1];
 			sessionStorage.password=res3[1];
-			document.write (sessionStorage.login + sessionStorage.password
 		}
 	}	
 	</script>
@@ -79,6 +75,7 @@
 <div id="r">
 	<p>
 		<script>
+		if(sessionStorage == null) document.write("The browser not support the storage");
 			dd();
 		</script>
 		</br>
@@ -90,19 +87,17 @@
 			}, 10); // refresh every 10 milliseconds
  
 				hh();
-				
 		</script>
+		</br></br>
+		<script>if(sessionStorage.login)document.write("Welcome " + sessionStorage.login + ". Please feel free to visit and enjoy ! ");</script>
 	</p>
 </div>
 <div class="menu">
 	<p>
-		Menu1
+		News
 	</p>
 	<p>
-		Menu2
-	</p>
-	<p>
-		Menu3
+		<a class="menu" href="deconnexion.html"> Deconnexion </a>
 	</p>
 </div>
  <div class="connect" onload="loadDirectory()" id="d">
