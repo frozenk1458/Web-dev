@@ -1,0 +1,27 @@
+<html>
+ <head>
+<title></title>
+<meta http-equiv="refresh" content="0; URL=index.html">
+</head>
+<body>
+<script>
+		//Get the current URL
+		var CheminComplet = document.location.href;
+		//Isolate the last part of url from '?' to the end
+		var res = CheminComplet.split("?");
+		//Isolate the part with the login and the password inside
+		var res1 = res[1].split("&");
+		//Isolate the login
+		var res2 = res1[0].split("=");
+		//Isolate the password
+		var res3 = res1[1].split("=");
+		//Testing that the login and the password match well 
+		if(res2[1] == 'rodul' && res3[1] == 'rodul')
+		{
+			sessionStorage.login=res2[1];
+			sessionStorage.password=res3[1];
+			document.location.href="news.html"
+		}
+</script>
+</body>
+</html>
