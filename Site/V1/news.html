@@ -3,61 +3,55 @@
 <title>News</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script>
-				function dd(){
-				var d = new Date();
-				dd = d.getDate();
-				mm = d.getMonth()+1;
-				if(d.getDate()<10)
-				{
-					dd = '0' + dd;
-				}
-				if(d.getMonth()<10)
-				{
-					mm = '0' + mm;
-				}
-				document.write(dd + "/" + mm + "/" + d.getFullYear());
-				}
-	</script>
-	<script>
-			function hh(){
-				var d = new Date();
-				sd = d.getSeconds();
-				hh = d.getHours();
-				minute = d.getMinutes();
-				if(d.getSeconds()<10)
-				{
-					sd = '0' + d.getSeconds();
-				}
-				if(d.getMinutes()<10)
-				{
-					minute = '0' + d.getMinutes();
-				}
-				if(d.getHours()<10)
-				{
-					hh = '0' + d.getHours();
-				}
-				document.write(hh +":"+ minute + ":" + sd);
-				}
+		function dd(){
+			var d = new Date();
+			dd = d.getDate();
+			mm = d.getMonth()+1;
+			if(d.getDate()<10)
+			{
+				dd = '0' + dd;
+			}
+			if(d.getMonth()<10)
+			{
+				mm = '0' + mm;
+			}
+			document.write(dd + "/" + mm + "/" + d.getFullYear());
+		}
+		function runClock() {
+			today   = new Date();
+			hours   = today.getHours();
+			minutes = today.getMinutes();
+			seconds = today.getSeconds();
+			timeValue = hours;
+			timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+			timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+			document.getElementById("time").innerHTML = timeValue;
+			timerID = setTimeout(runClock,1000);
+			timerRunning = true;
+		}
+</script>
 	</script>
 </head>
 <body>
+<div>
+	<script>
+		dd();
+		document.write("<br>");
+	</script>
+</div>
+<div id="time">
+<script>
+runClock();
+</script>
+</div>
 <!-- Current date and hours display. Refresh every second-->
 <div id="r">
 	<p>
 		<script>
 		if(sessionStorage == null) document.write("The browser not support the storage");
-			dd();
 		</script>
 		</br>
-		<script>
-			var auto_refresh = setInterval(	
-			function ()
-			{
-				$('#r').load('index.html').fadeIn("slow");
-			}, 10); // refresh every 10 milliseconds
- 
-				hh();
-		</script>
+		</br>
 		</br></br>
 		<script>if(sessionStorage.login)document.write("Welcome " + sessionStorage.login + ". Please feel free to visit and enjoy ! ");</script>
 	</p>

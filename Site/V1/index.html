@@ -7,25 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
 	<meta name="author" content="Local Author">
-	<script type="text/javascript">
-	function envoieRequete(url,id)
-	{
-		var xhr_object = null;
-		var position = id;
-		if(window.XMLHttpRequest)  xhr_object = new XMLHttpRequest();
-		else
-	    if (window.ActiveXObject)  xhr_object = new ActiveXObject("Microsoft.XMLHTTP"); 
-
-		xhr_object.open("GET", url, true);
-		xhr_object.onreadystatechange = function(){
-		if ( xhr_object.readyState == 4 )
-		{
-			document.getElementById(position).innerHTML = xhr_object.responseText;
-		}
-		}
-		xhr_object.send(null);
-}
-</script>
 </head>
 <body>
  <div class="connect">
